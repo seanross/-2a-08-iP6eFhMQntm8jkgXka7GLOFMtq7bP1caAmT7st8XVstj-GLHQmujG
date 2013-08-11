@@ -11,7 +11,7 @@
                   <div class="span3">
                       <select name="calendar_binding_placement" id="calendar_binding_placement">
                           <?php foreach($calendar_binding_placement as $row): ?>
-                                <option value="<?php echo $row->getId(); ?>" <?php if($row->getId() == 2) echo "selected=true"; ?>><?php echo $row->getName(); ?></option>
+                                <option value="<?php echo $row->getId(); ?>" <?php // if($row->getId() == 2) echo "selected=true"; ?>><?php echo $row->getName(); ?></option>
                           <?php endforeach;?>
                       </select>
                   </div> 
