@@ -1,0 +1,105 @@
+10
+
+dir
+0
+https://xp-dev.com/svn/seanross/PrintingPress/application/language
+https://xp-dev.com/svn/seanross
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+27735f7a-ae5e-cc49-a837-2d6a0e096662
+
+chinese
+dir
+
+
+
+add
+
+dutch
+dir
+
+
+
+add
+
+english
+dir
+
+
+
+add
+
+french
+dir
+
+
+
+add
+
+german
+dir
+
+
+
+add
+
+italian
+dir
+
+
+
+add
+
+japanese
+dir
+
+
+
+add
+
+portuguese
+dir
+
+
+
+add
+
+romanian
+dir
+
+
+
+add
+
+russian
+dir
+
+
+
+add
+
+spanish
+dir
+
+
+
+add
+
