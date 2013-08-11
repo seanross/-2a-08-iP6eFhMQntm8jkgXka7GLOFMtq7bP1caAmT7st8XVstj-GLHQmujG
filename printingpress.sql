@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 10, 2013 at 03:37 AM
--- Server version: 5.5.24-log
--- PHP Version: 5.3.13
+-- Generation Time: Aug 11, 2013 at 08:12 AM
+-- Server version: 5.5.25
+-- PHP Version: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ USE `printingpress`;
 --
 
 DROP TABLE IF EXISTS `cashiering_cart_tb`;
-CREATE TABLE IF NOT EXISTS `cashiering_cart_tb` (
+CREATE TABLE `cashiering_cart_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cashiering_payment_id` int(11) DEFAULT NULL,
   `created_by` varchar(45) DEFAULT NULL,
@@ -48,7 +48,7 @@ INSERT INTO `cashiering_cart_tb` (`id`, `cashiering_payment_id`, `created_by`, `
 --
 
 DROP TABLE IF EXISTS `cashiering_payment_tb`;
-CREATE TABLE IF NOT EXISTS `cashiering_payment_tb` (
+CREATE TABLE `cashiering_payment_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `balance` varchar(45) DEFAULT NULL,
   `created_by` varchar(45) DEFAULT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `cashiering_payment_tb` (
 --
 
 DROP TABLE IF EXISTS `ci_sessions`;
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
+CREATE TABLE `ci_sessions` (
   `session_id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
   `ip_address` varchar(16) COLLATE utf8_bin NOT NULL DEFAULT '0',
   `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('0cf114475c08f7fbb5b5f1f7e867e47d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0', 1376074109, ''),
-('403bbadf2c3cfc9d095e6189f153558d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0', 1376103306, '');
+('568144c6fe7bbcb1107f37124c34907d', '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:22.0) Gecko/20100101 Firefox/22.0', 1376190953, 0x613a343a7b733a373a22757365725f6964223b733a323a223235223b733a383a22757365726e616d65223b733a343a227365616e223b733a343a22726f6c65223b733a343a2275736572223b733a363a22737461747573223b733a313a2231223b7d),
+('7222244eeaa8c0e7dec7108e43edccd9', '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:22.0) Gecko/20100101 Firefox/22.0', 1376194053, 0x613a353a7b733a393a22757365725f64617461223b733a303a22223b733a373a22757365725f6964223b733a323a223235223b733a383a22757365726e616d65223b733a343a227365616e223b733a343a22726f6c65223b733a343a2275736572223b733a363a22737461747573223b733a313a2231223b7d);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 --
 
 DROP TABLE IF EXISTS `forum_post_tb`;
-CREATE TABLE IF NOT EXISTS `forum_post_tb` (
+CREATE TABLE `forum_post_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_profiles_id` int(11) NOT NULL,
   `forum_id` int(11) NOT NULL,
@@ -118,7 +118,7 @@ INSERT INTO `forum_post_tb` (`id`, `user_profiles_id`, `forum_id`, `updated_date
 --
 
 DROP TABLE IF EXISTS `forum_tb`;
-CREATE TABLE IF NOT EXISTS `forum_tb` (
+CREATE TABLE `forum_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `topic` varchar(255) NOT NULL,
   `content` text NOT NULL,
@@ -147,20 +147,13 @@ INSERT INTO `forum_tb` (`id`, `topic`, `content`, `created_by`, `updated_by`, `c
 --
 
 DROP TABLE IF EXISTS `login_attempts`;
-CREATE TABLE IF NOT EXISTS `login_attempts` (
+CREATE TABLE `login_attempts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(40) COLLATE utf8_bin NOT NULL,
   `login` varchar(50) COLLATE utf8_bin NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(4, '127.0.0.1', 'seanross', '2013-08-09 16:52:24');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -169,7 +162,7 @@ INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
 --
 
 DROP TABLE IF EXISTS `mis_brochure_folding_tb`;
-CREATE TABLE IF NOT EXISTS `mis_brochure_folding_tb` (
+CREATE TABLE `mis_brochure_folding_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -186,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `mis_brochure_folding_tb` (
 --
 
 INSERT INTO `mis_brochure_folding_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'Three(3) piece Fold', '3.50', 'admin', 'admin', '2013-08-08 14:02:25', '2013-08-08 06:02:25', 1);
+(1, 'Three(3) piece Fold', 3.50, 'admin', 'admin', '2013-08-08 14:02:25', '2013-08-08 06:02:25', 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +188,7 @@ INSERT INTO `mis_brochure_folding_tb` (`id`, `name`, `virtual_price`, `created_b
 --
 
 DROP TABLE IF EXISTS `mis_brochure_paper_type_tb`;
-CREATE TABLE IF NOT EXISTS `mis_brochure_paper_type_tb` (
+CREATE TABLE `mis_brochure_paper_type_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -212,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `mis_brochure_paper_type_tb` (
 --
 
 INSERT INTO `mis_brochure_paper_type_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'Cartolina', '3.50', 'admin', NULL, '2013-08-08 14:17:37', '2013-08-08 06:17:37', 1);
+(1, 'Cartolina', 3.50, 'admin', NULL, '2013-08-08 14:17:37', '2013-08-08 06:17:37', 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +214,7 @@ INSERT INTO `mis_brochure_paper_type_tb` (`id`, `name`, `virtual_price`, `create
 --
 
 DROP TABLE IF EXISTS `mis_brochure_printed_side_tb`;
-CREATE TABLE IF NOT EXISTS `mis_brochure_printed_side_tb` (
+CREATE TABLE `mis_brochure_printed_side_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -238,8 +231,8 @@ CREATE TABLE IF NOT EXISTS `mis_brochure_printed_side_tb` (
 --
 
 INSERT INTO `mis_brochure_printed_side_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'Zebra Stripes', '10.50', 'admin', 'admin', '2013-08-08 14:15:25', '2013-08-08 06:15:25', 1),
-(2, 'Leopard Fur', '50.00', 'admin', 'admin', '2013-08-08 14:16:15', '2013-08-08 06:16:35', 1);
+(1, 'Zebra Stripes', 10.50, 'admin', 'admin', '2013-08-08 14:15:25', '2013-08-08 06:15:25', 1),
+(2, 'Leopard Fur', 50.00, 'admin', 'admin', '2013-08-08 14:16:15', '2013-08-08 06:16:35', 1);
 
 -- --------------------------------------------------------
 
@@ -248,7 +241,7 @@ INSERT INTO `mis_brochure_printed_side_tb` (`id`, `name`, `virtual_price`, `crea
 --
 
 DROP TABLE IF EXISTS `mis_brochure_size_tb`;
-CREATE TABLE IF NOT EXISTS `mis_brochure_size_tb` (
+CREATE TABLE `mis_brochure_size_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -265,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `mis_brochure_size_tb` (
 --
 
 INSERT INTO `mis_brochure_size_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, '10', '0.00', 'admin', 'admin', '2013-08-08 06:39:38', '2013-08-07 22:39:38', 1);
+(1, '10', 0.00, 'admin', 'admin', '2013-08-08 06:39:38', '2013-08-07 22:39:38', 1);
 
 -- --------------------------------------------------------
 
@@ -274,7 +267,7 @@ INSERT INTO `mis_brochure_size_tb` (`id`, `name`, `virtual_price`, `created_by`,
 --
 
 DROP TABLE IF EXISTS `mis_calendar_binding_placement_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_binding_placement_tb` (
+CREATE TABLE `mis_calendar_binding_placement_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -291,10 +284,10 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_binding_placement_tb` (
 --
 
 INSERT INTO `mis_calendar_binding_placement_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(5, '2 Binding', '34.75', 'admin', 'admin', '2013-08-07 14:28:31', '2013-08-07 06:28:31', 1),
-(6, 'Second Binding', '7.50', 'admin', 'admin', '2013-08-07 15:25:20', '2013-08-07 07:25:20', 1),
-(8, 'New Binding', '2.90', 'admin', 'admin', '2013-08-08 11:54:50', '2013-08-08 03:54:50', 1),
-(9, 'New Metal Binding', '0.50', 'admin', 'admin', '2013-08-08 13:59:58', '2013-08-08 05:59:58', 1);
+(5, '2 Binding', 34.75, 'admin', 'admin', '2013-08-07 14:28:31', '2013-08-07 06:28:31', 1),
+(6, 'Second Binding', 7.50, 'admin', 'admin', '2013-08-07 15:25:20', '2013-08-07 07:25:20', 1),
+(8, 'New Binding', 2.90, 'admin', 'admin', '2013-08-08 11:54:50', '2013-08-08 03:54:50', 1),
+(9, 'New Metal Binding', 0.50, 'admin', 'admin', '2013-08-08 13:59:58', '2013-08-08 05:59:58', 1);
 
 -- --------------------------------------------------------
 
@@ -303,7 +296,7 @@ INSERT INTO `mis_calendar_binding_placement_tb` (`id`, `name`, `virtual_price`, 
 --
 
 DROP TABLE IF EXISTS `mis_calendar_binding_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_binding_tb` (
+CREATE TABLE `mis_calendar_binding_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -320,8 +313,8 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_binding_tb` (
 --
 
 INSERT INTO `mis_calendar_binding_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'Wood', '1.50', 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-08 06:47:05', 1),
-(2, 'Metal Cover', '0.50', 'admin', NULL, '2013-08-08 14:46:41', '2013-08-08 06:46:41', 1);
+(1, 'Wood', 1.50, 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-08 06:47:05', 1),
+(2, 'Metal Cover', 0.50, 'admin', NULL, '2013-08-08 14:46:41', '2013-08-08 06:46:41', 1);
 
 -- --------------------------------------------------------
 
@@ -330,7 +323,7 @@ INSERT INTO `mis_calendar_binding_tb` (`id`, `name`, `virtual_price`, `created_b
 --
 
 DROP TABLE IF EXISTS `mis_calendar_cover_paper_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_cover_paper_tb` (
+CREATE TABLE `mis_calendar_cover_paper_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -347,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_cover_paper_tb` (
 --
 
 INSERT INTO `mis_calendar_cover_paper_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'test data', '0.50', 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-09 06:31:22', 1);
+(1, 'test data', 0.50, 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-09 06:31:22', 1);
 
 -- --------------------------------------------------------
 
@@ -356,7 +349,7 @@ INSERT INTO `mis_calendar_cover_paper_tb` (`id`, `name`, `virtual_price`, `creat
 --
 
 DROP TABLE IF EXISTS `mis_calendar_cover_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_cover_tb` (
+CREATE TABLE `mis_calendar_cover_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -373,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_cover_tb` (
 --
 
 INSERT INTO `mis_calendar_cover_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'test data', '100.00', 'admin', NULL, '2013-08-06 00:00:00', '2013-08-06 15:55:36', 1);
+(1, 'test data', 100.00, 'admin', NULL, '2013-08-06 00:00:00', '2013-08-06 15:55:36', 1);
 
 -- --------------------------------------------------------
 
@@ -382,7 +375,7 @@ INSERT INTO `mis_calendar_cover_tb` (`id`, `name`, `virtual_price`, `created_by`
 --
 
 DROP TABLE IF EXISTS `mis_calendar_hole_drilling_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_hole_drilling_tb` (
+CREATE TABLE `mis_calendar_hole_drilling_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -399,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_hole_drilling_tb` (
 --
 
 INSERT INTO `mis_calendar_hole_drilling_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, '7 holes', '5.50', 'admin', 'admin', '2013-08-08 14:03:36', '2013-08-09 06:31:37', 1);
+(1, '7 holes', 5.50, 'admin', 'admin', '2013-08-08 14:03:36', '2013-08-09 06:31:37', 1);
 
 -- --------------------------------------------------------
 
@@ -408,7 +401,7 @@ INSERT INTO `mis_calendar_hole_drilling_tb` (`id`, `name`, `virtual_price`, `cre
 --
 
 DROP TABLE IF EXISTS `mis_calendar_page_size_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_page_size_tb` (
+CREATE TABLE `mis_calendar_page_size_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `created_by` varchar(45) DEFAULT NULL,
@@ -425,7 +418,7 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_page_size_tb` (
 --
 
 INSERT INTO `mis_calendar_page_size_tb` (`id`, `name`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`, `virtual_price`) VALUES
-(1, 'test data', 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-09 06:31:48', 1, '0.00');
+(1, 'test data', 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-09 06:31:48', 1, 0.00);
 
 -- --------------------------------------------------------
 
@@ -434,7 +427,7 @@ INSERT INTO `mis_calendar_page_size_tb` (`id`, `name`, `created_by`, `updated_by
 --
 
 DROP TABLE IF EXISTS `mis_calendar_pages_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_pages_tb` (
+CREATE TABLE `mis_calendar_pages_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -451,8 +444,8 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_pages_tb` (
 --
 
 INSERT INTO `mis_calendar_pages_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(3, '60 leaves', '3.00', 'admin', 'admin', '2013-08-07 12:33:38', '2013-08-07 04:33:38', 1),
-(4, 'Extended Pages', '0.50', 'admin', 'admin', '2013-08-08 14:12:46', '2013-08-08 06:14:55', 1);
+(3, '60 leaves', 3.00, 'admin', 'admin', '2013-08-07 12:33:38', '2013-08-07 04:33:38', 1),
+(4, 'Extended Pages', 0.50, 'admin', 'admin', '2013-08-08 14:12:46', '2013-08-08 06:14:55', 1);
 
 -- --------------------------------------------------------
 
@@ -461,7 +454,7 @@ INSERT INTO `mis_calendar_pages_tb` (`id`, `name`, `virtual_price`, `created_by`
 --
 
 DROP TABLE IF EXISTS `mis_calendar_paper_inside_pages_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_paper_inside_pages_tb` (
+CREATE TABLE `mis_calendar_paper_inside_pages_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -478,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_paper_inside_pages_tb` (
 --
 
 INSERT INTO `mis_calendar_paper_inside_pages_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'Carton type', '8.50', 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-09 06:32:16', 1);
+(1, 'Carton type', 8.50, 'admin', 'admin', '2013-08-06 00:00:00', '2013-08-09 06:32:16', 1);
 
 -- --------------------------------------------------------
 
@@ -487,7 +480,7 @@ INSERT INTO `mis_calendar_paper_inside_pages_tb` (`id`, `name`, `virtual_price`,
 --
 
 DROP TABLE IF EXISTS `mis_calendar_type_tb`;
-CREATE TABLE IF NOT EXISTS `mis_calendar_type_tb` (
+CREATE TABLE `mis_calendar_type_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `virtual_price` decimal(10,2) DEFAULT NULL,
@@ -504,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `mis_calendar_type_tb` (
 --
 
 INSERT INTO `mis_calendar_type_tb` (`id`, `name`, `virtual_price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'test data', '100.00', 'admin', NULL, '2013-08-06 00:00:00', '2013-08-06 15:58:21', 1);
+(1, 'test data', 100.00, 'admin', NULL, '2013-08-06 00:00:00', '2013-08-06 15:58:21', 1);
 
 -- --------------------------------------------------------
 
@@ -513,7 +506,7 @@ INSERT INTO `mis_calendar_type_tb` (`id`, `name`, `virtual_price`, `created_by`,
 --
 
 DROP TABLE IF EXISTS `mis_image_tb`;
-CREATE TABLE IF NOT EXISTS `mis_image_tb` (
+CREATE TABLE `mis_image_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   `file_type` varchar(50) NOT NULL,
@@ -537,18 +530,29 @@ CREATE TABLE IF NOT EXISTS `mis_image_tb` (
   `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `mis_image_tb`
 --
 
 INSERT INTO `mis_image_tb` (`id`, `file_name`, `file_type`, `file_path`, `full_path`, `file_url`, `thumb_url`, `raw_name`, `orig_name`, `client_name`, `file_ext`, `file_size`, `is_image`, `image_width`, `image_height`, `image_type`, `image_size_str`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(1, 'Hydrangeas2.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Hydrangeas2.jpg', 'http://localhost/PrintingPress/uploads/Hydrangeas2.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Hydrangeas2.jpg', 'Hydrangeas2', 'Hydrangeas.jpg', 'Hydrangeas.jpg', '.jpg', '581', 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:22:53', '2013-08-09 08:22:53', 1),
-(2, 'Hydrangeas.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Hydrangeas.jpg', 'http://localhost/PrintingPress/uploads/Hydrangeas.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Hydrangeas.jpg', 'Hydrangeas', 'Hydrangeas.jpg', 'Hydrangeas.jpg', '.jpg', '581', 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:24:35', '2013-08-09 08:24:35', 1),
-(3, 'Hydrangeas1.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Hydrangeas1.jpg', 'http://localhost/PrintingPress/uploads/Hydrangeas1.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Hydrangeas1.jpg', 'Hydrangeas1', 'Hydrangeas.jpg', 'Hydrangeas.jpg', '.jpg', '581', 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:28:08', '2013-08-09 08:28:08', 1),
-(4, 'Koala.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Koala.jpg', 'http://localhost/PrintingPress/uploads/Koala.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Koala.jpg', 'Koala', 'Koala.jpg', 'Koala.jpg', '.jpg', '763', 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:32:31', '2013-08-09 08:32:31', 1),
-(5, 'Lighthouse.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Lighthouse.jpg', 'http://localhost/PrintingPress/uploads/Lighthouse.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Lighthouse.jpg', 'Lighthouse', 'Lighthouse.jpg', 'Lighthouse.jpg', '.jpg', '548', 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'sean', NULL, '2013-08-09 18:48:04', '2013-08-09 10:48:04', 1);
+(1, 'Hydrangeas2.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Hydrangeas2.jpg', 'http://localhost/PrintingPress/uploads/Hydrangeas2.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Hydrangeas2.jpg', 'Hydrangeas2', 'Hydrangeas.jpg', 'Hydrangeas.jpg', '.jpg', 581, 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:22:53', '2013-08-09 08:22:53', 1),
+(2, 'Hydrangeas.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Hydrangeas.jpg', 'http://localhost/PrintingPress/uploads/Hydrangeas.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Hydrangeas.jpg', 'Hydrangeas', 'Hydrangeas.jpg', 'Hydrangeas.jpg', '.jpg', 581, 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:24:35', '2013-08-09 08:24:35', 1),
+(3, 'Hydrangeas1.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Hydrangeas1.jpg', 'http://localhost/PrintingPress/uploads/Hydrangeas1.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Hydrangeas1.jpg', 'Hydrangeas1', 'Hydrangeas.jpg', 'Hydrangeas.jpg', '.jpg', 581, 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:28:08', '2013-08-09 08:28:08', 1),
+(4, 'Koala.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Koala.jpg', 'http://localhost/PrintingPress/uploads/Koala.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Koala.jpg', 'Koala', 'Koala.jpg', 'Koala.jpg', '.jpg', 763, 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'admin', NULL, '2013-08-09 16:32:31', '2013-08-09 08:32:31', 1),
+(5, 'Lighthouse.jpg', 'image/jpeg', 'C:/wamp/www/PrintingPress/uploads/', 'C:/wamp/www/PrintingPress/uploads/Lighthouse.jpg', 'http://localhost/PrintingPress/uploads/Lighthouse.jpg', 'http://localhost/PrintingPress/uploads/thumbs/Lighthouse.jpg', 'Lighthouse', 'Lighthouse.jpg', 'Lighthouse.jpg', '.jpg', 548, 1, 1024, 768, 'jpeg', 'width="1024" height="768"', 'sean', NULL, '2013-08-09 18:48:04', '2013-08-09 10:48:04', 1),
+(6, 'carousel_1.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_1.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_1.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_1.jpg', 'carousel_1', 'carousel_1.jpg', 'carousel_1.jpg', '.jpg', 174, 1, 890, 323, 'jpeg', 'width="890" height="323"', 'sean', NULL, '2013-08-10 06:39:04', '2013-08-09 22:39:04', 1),
+(7, 'carousel_4.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_4.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_4.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_4.jpg', 'carousel_4', 'carousel_4.jpg', 'carousel_4.jpg', '.jpg', 44, 1, 590, 332, 'jpeg', 'width="590" height="332"', 'sean', NULL, '2013-08-10 07:50:23', '2013-08-09 23:50:23', 1),
+(8, 'carousel_11.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_11.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_11.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_11.jpg', 'carousel_11', 'carousel_1.jpg', 'carousel_1.jpg', '.jpg', 174, 1, 890, 323, 'jpeg', 'width="890" height="323"', 'sean', NULL, '2013-08-11 04:00:15', '2013-08-10 20:00:15', 1),
+(9, 'carousel_12.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_12.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_12.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_12.jpg', 'carousel_12', 'carousel_1.jpg', 'carousel_1.jpg', '.jpg', 174, 1, 890, 323, 'jpeg', 'width="890" height="323"', 'sean', NULL, '2013-08-11 04:01:11', '2013-08-10 20:01:11', 1),
+(10, 'carousel_13.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_13.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_13.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_13.jpg', 'carousel_13', 'carousel_1.jpg', 'carousel_1.jpg', '.jpg', 174, 1, 890, 323, 'jpeg', 'width="890" height="323"', 'sean', NULL, '2013-08-11 04:02:27', '2013-08-10 20:02:27', 1),
+(11, 'carousel_3.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_3.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_3.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_3.jpg', 'carousel_3', 'carousel_3.jpg', 'carousel_3.jpg', '.jpg', 61, 1, 590, 332, 'jpeg', 'width="590" height="332"', 'sean', NULL, '2013-08-11 04:06:26', '2013-08-10 20:06:26', 1),
+(12, 'carousel_2.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_2.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_2.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_2.jpg', 'carousel_2', 'carousel_2.jpg', 'carousel_2.jpg', '.jpg', 63, 1, 973, 290, 'jpeg', 'width="973" height="290"', 'sean', NULL, '2013-08-11 04:10:04', '2013-08-10 20:10:04', 1),
+(13, 'sample3.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/sample3.jpg', 'http://localhost:8888/PrintingPress/uploads/sample3.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/sample3.jpg', 'sample3', 'sample3.jpg', 'sample3.jpg', '.jpg', 113, 1, 1500, 550, 'jpeg', 'width="1500" height="550"', 'sean', NULL, '2013-08-11 05:05:18', '2013-08-10 21:05:18', 1),
+(14, 'carousel_41.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_41.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_41.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_41.jpg', 'carousel_41', 'carousel_4.jpg', 'carousel_4.jpg', '.jpg', 44, 1, 590, 332, 'jpeg', 'width="590" height="332"', 'sean', NULL, '2013-08-11 05:22:36', '2013-08-10 21:22:36', 1),
+(15, 'carousel_31.jpg', 'image/jpeg', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/carousel_31.jpg', 'http://localhost:8888/PrintingPress/uploads/carousel_31.jpg', 'http://localhost:8888/PrintingPress/uploads/thumbs/carousel_31.jpg', 'carousel_31', 'carousel_3.jpg', 'carousel_3.jpg', '.jpg', 61, 1, 590, 332, 'jpeg', 'width="590" height="332"', 'sean', NULL, '2013-08-11 05:23:58', '2013-08-10 21:23:58', 1),
+(16, 'logo.png', 'image/png', '/Applications/MAMP/htdocs/PrintingPress/uploads/', '/Applications/MAMP/htdocs/PrintingPress/uploads/logo.png', 'http://localhost:8888/PrintingPress/uploads/logo.png', 'http://localhost:8888/PrintingPress/uploads/thumbs/logo.png', 'logo', 'logo.png', 'logo.png', '.png', 12, 1, 504, 103, 'png', 'width="504" height="103"', 'sean', NULL, '2013-08-11 05:25:31', '2013-08-10 21:25:31', 1);
 
 -- --------------------------------------------------------
 
@@ -557,7 +561,7 @@ INSERT INTO `mis_image_tb` (`id`, `file_name`, `file_type`, `file_path`, `full_p
 --
 
 DROP TABLE IF EXISTS `product_brochure_tb`;
-CREATE TABLE IF NOT EXISTS `product_brochure_tb` (
+CREATE TABLE `product_brochure_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cashiering_cart_id` int(11) DEFAULT NULL,
   `mis_image_id` int(11) DEFAULT NULL,
@@ -582,17 +586,21 @@ CREATE TABLE IF NOT EXISTS `product_brochure_tb` (
 --
 
 DROP TABLE IF EXISTS `product_calendar_tb`;
-CREATE TABLE IF NOT EXISTS `product_calendar_tb` (
+CREATE TABLE `product_calendar_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `instruction` varchar(255) DEFAULT NULL,
   `cashiering_cart_id` int(11) DEFAULT NULL,
   `mis_image_id` int(11) DEFAULT NULL,
   `mis_calendar_page_size_id` int(11) DEFAULT NULL,
   `mis_calendar_paper_inside_pages_id` int(11) DEFAULT NULL,
   `mis_calendar_cover_paper_id` int(11) DEFAULT NULL,
+  `mis_calendar_cover_id` int(11) NOT NULL,
   `mis_calendar_pages_id` int(11) DEFAULT NULL,
   `mis_calendar_binding_id` int(11) DEFAULT NULL,
   `mis_calendar_binding_placement_id` int(11) DEFAULT NULL,
   `mis_calendar_hole_drilling_id` int(11) DEFAULT NULL,
+  `turn_around` int(5) NOT NULL DEFAULT '3',
   `quantity` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `created_by` varchar(45) DEFAULT NULL,
@@ -601,28 +609,17 @@ CREATE TABLE IF NOT EXISTS `product_calendar_tb` (
   `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `product_calendar_tb`
 --
 
-INSERT INTO `product_calendar_tb` (`id`, `cashiering_cart_id`, `mis_image_id`, `mis_calendar_page_size_id`, `mis_calendar_paper_inside_pages_id`, `mis_calendar_cover_paper_id`, `mis_calendar_pages_id`, `mis_calendar_binding_id`, `mis_calendar_binding_placement_id`, `mis_calendar_hole_drilling_id`, `quantity`, `price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
-(6, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '15.00', 'admin', NULL, '2013-08-09 15:58:31', '2013-08-09 07:58:31', 1),
-(7, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '2402.00', 'admin', NULL, '2013-08-09 16:02:48', '2013-08-09 08:02:48', 1),
-(8, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '2402.34', 'admin', NULL, '2013-08-09 16:07:23', '2013-08-09 08:07:23', 1),
-(9, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '2402.34', 'admin', NULL, '2013-08-09 16:09:44', '2013-08-09 08:09:44', 1),
-(10, NULL, NULL, 1, 1, 1, 4, 1, 9, 1, 10, '1828.13', 'admin', NULL, '2013-08-09 16:11:14', '2013-08-09 08:11:14', 1),
-(11, NULL, NULL, 1, 1, 1, 4, 1, 9, 1, 10, '1828.13', 'admin', NULL, '2013-08-09 16:11:41', '2013-08-09 08:11:41', 1),
-(12, NULL, NULL, 1, 1, 1, 4, 1, 9, 1, 10, '1828.13', 'admin', NULL, '2013-08-09 16:12:07', '2013-08-09 08:12:07', 1),
-(13, NULL, NULL, 1, 1, 1, 4, 1, 9, 1, 10, '1828.13', 'admin', NULL, '2013-08-09 16:13:37', '2013-08-09 08:13:37', 1),
-(14, NULL, NULL, 1, 1, 1, 4, 1, 9, 1, 10, '1828.13', 'admin', NULL, '2013-08-09 16:19:54', '2013-08-09 08:19:54', 1),
-(15, NULL, 4, 1, 1, 1, 3, 1, 5, 1, 10, '1537.50', 'admin', 'admin', '2013-08-09 16:32:24', '2013-08-09 08:32:31', 1),
-(16, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '1537.50', 'admin', NULL, '2013-08-09 18:32:21', '2013-08-09 10:32:21', 1),
-(17, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '1537.50', 'admin', NULL, '2013-08-09 18:32:53', '2013-08-09 10:32:53', 1),
-(18, NULL, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '1537.50', 'admin', NULL, '2013-08-09 18:37:09', '2013-08-09 10:37:09', 1),
-(19, 6, NULL, 1, 1, 1, 3, 1, 5, 1, 10, '1537.50', 'admin', NULL, '2013-08-09 18:44:15', '2013-08-09 10:44:15', 1),
-(20, 6, 5, 1, 1, 1, 3, 1, 5, 1, 10, '3459.38', 'sean', 'sean', '2013-08-09 18:47:18', '2013-08-09 10:48:04', 1);
+INSERT INTO `product_calendar_tb` (`id`, `name`, `instruction`, `cashiering_cart_id`, `mis_image_id`, `mis_calendar_page_size_id`, `mis_calendar_paper_inside_pages_id`, `mis_calendar_cover_paper_id`, `mis_calendar_cover_id`, `mis_calendar_pages_id`, `mis_calendar_binding_id`, `mis_calendar_binding_placement_id`, `mis_calendar_hole_drilling_id`, `turn_around`, `quantity`, `price`, `created_by`, `updated_by`, `created_date`, `updated_date`, `enabled`) VALUES
+(29, NULL, NULL, 6, 13, 1, 1, 1, 1, 3, 1, 5, 1, 1, 10, 3459.38, 'sean', 'sean', '2013-08-11 05:05:12', '2013-08-10 21:05:18', 1),
+(30, 'Kewl Project', 'Nice!', 6, 14, 1, 1, 1, 1, 3, 1, 9, 1, 3, 10, 1195.00, 'sean', 'sean', '2013-08-11 05:22:28', '2013-08-10 21:22:47', 1),
+(31, '', '', 6, 15, 1, 1, 1, 1, 3, 1, 5, 1, 3, 10, 1537.50, 'sean', 'sean', '2013-08-11 05:23:49', '2013-08-10 21:24:18', 1),
+(32, 'Nice Banner', '', 6, 16, 1, 1, 1, 1, 3, 1, 5, 1, 3, 10, 1537.50, 'sean', 'sean', '2013-08-11 05:25:26', '2013-08-10 21:25:47', 1);
 
 -- --------------------------------------------------------
 
@@ -631,7 +628,7 @@ INSERT INTO `product_calendar_tb` (`id`, `cashiering_cart_id`, `mis_image_id`, `
 --
 
 DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
+CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role` varchar(255) NOT NULL,
   `default` tinyint(2) NOT NULL,
@@ -658,7 +655,7 @@ INSERT INTO `roles` (`id`, `role`, `default`, `created_by`, `updated_by`, `creat
 --
 
 DROP TABLE IF EXISTS `user_autologin`;
-CREATE TABLE IF NOT EXISTS `user_autologin` (
+CREATE TABLE `user_autologin` (
   `key_id` char(32) COLLATE utf8_bin NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
@@ -674,7 +671,7 @@ CREATE TABLE IF NOT EXISTS `user_autologin` (
 --
 
 DROP TABLE IF EXISTS `user_profiles`;
-CREATE TABLE IF NOT EXISTS `user_profiles` (
+CREATE TABLE `user_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `country` varchar(20) COLLATE utf8_bin DEFAULT NULL,
@@ -710,7 +707,7 @@ INSERT INTO `user_profiles` (`id`, `user_id`, `country`, `website`, `address`, `
 --
 
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userprofile_id` int(11) NOT NULL,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
@@ -737,5 +734,5 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `userprofile_id`, `username`, `password`, `email`, `role_id`, `activated`, `banned`, `ban_reason`, `new_password_key`, `new_password_requested`, `new_email`, `new_email_key`, `last_ip`, `last_login`, `created`, `modified`) VALUES
 (24, 0, 'seanadmin', '$2a$08$VVQ111HEgie1yN//kcIixOrF2b2PFRdViTJQb3HJGtWAX4iWW5QjS', 'email_ni_sean@yahoo.com', 1, 1, 0, NULL, NULL, NULL, NULL, 'fb4f943c6b724235c68b218a8e68116c', '127.0.0.1', '0000-00-00 00:00:00', '2013-08-09 17:44:09', '2013-08-09 17:49:13'),
-(25, 9, 'sean', '$2a$08$iP6eFhMQntm8jkgXka7GLOFMtq7bP1caAmT7st8XVstj/GLHQmujG', 'xbabyxlookxatme@yahoo.com', 2, 1, 0, NULL, NULL, NULL, NULL, '58254c6a2b7dc74a87f18f2e0640f16a', '127.0.0.1', '2013-08-09 17:57:39', '2013-08-09 17:49:58', '2013-08-09 18:16:20'),
+(25, 9, 'sean', '$2a$08$iP6eFhMQntm8jkgXka7GLOFMtq7bP1caAmT7st8XVstj/GLHQmujG', 'xbabyxlookxatme@yahoo.com', 2, 1, 0, NULL, NULL, NULL, NULL, '58254c6a2b7dc74a87f18f2e0640f16a', '::1', '2013-08-11 05:16:06', '2013-08-09 17:49:58', '2013-08-11 03:16:06'),
 (26, 0, 'abigail', '$2a$08$EjBOisz2mCovj1a.vACaf.tRCaq19U75dPW3JYgpiFCwIsGv5fIOi', 'abi_gail_009@hotmail.com', 2, 1, 0, NULL, NULL, NULL, NULL, '911d57826c9d4713c5bc694abc4678f0', '127.0.0.1', '0000-00-00 00:00:00', '2013-08-09 17:56:39', '2013-08-09 17:57:25');
